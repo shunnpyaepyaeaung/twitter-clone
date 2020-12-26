@@ -1,3 +1,4 @@
+include ../mixins/mixins
 doctype html
 html(lang="en")
   head
@@ -27,7 +28,7 @@ html(lang="en")
             i.fas.fa-envelope
           a(href="/profile")
             i.fas.fa-user
-          a(href="/logout")
+          a(href="/signout")
             i.fas.fa-sign-out-alt
         .mainSectionContainer.col-10.col-md-8.col-lg-6
           .titleContainer
@@ -56,3 +57,4 @@ html(lang="en")
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6",
       crossorigin="anonymous"
     )
+    script(src="/js/common.js")

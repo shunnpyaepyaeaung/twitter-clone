@@ -3,7 +3,13 @@
     --buttonHoverBG: #d4edff;
     --lightGrey: rgb(230,236,240);
     --spacing: 15px;
+    --blueLight: #9BD1F9;
 }
+
+*{
+    outline: none !important;
+}
+
 a{
     color: inherit;
 }
@@ -28,6 +34,7 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #212529;
 }
 
 nav a.blue{
@@ -65,5 +72,48 @@ h1{
 }
 
 .titleContainer h1{
+   flex: 1;
+}
 
+.postFormContainer{
+    display: flex;
+    padding: var(--spacing);
+    border-bottom: 10px solid rgb(230,236,240);
+    flex-shrink: 0;
+}
+
+.userImageContainer{
+    width: 45px;
+    height: 45px;
+}
+
+.userImageContainer img{
+    width: 100%;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.textAreaContainer{
+    flex: 1;
+    padding-left: var(--spacing);
+}
+
+.textAreaContainer textarea{
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 19px;
+}
+
+#submitPostButton{
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 7px 15px;
+    margin-top: 6px;
+}
+
+#submitPostButton:disabled{
+    background-color: var(--blueLight)
 }
