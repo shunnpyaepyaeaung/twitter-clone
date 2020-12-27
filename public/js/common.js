@@ -11,3 +11,30 @@ $(`#postTextarea`).keyup(event=>{
     }
     submitButton.prop('disabled', false);
 })
+
+$(`#submitPostButton`).click(()=>{
+    var button = $(event.target);
+    var textbox = $(`#postTextarea`);
+    var data = {
+        content: textbox.val()
+    }
+    $.post("/api/posts",data, postData=>{
+        var html = createPostHtml(postData);
+        $(`.postContainer`).prepend(html);
+        textbox.val("");
+        button.prop("disabled", true);
+    })
+})
+
+function createPostHtml(postData){
+    var postedBy = postData.postedBy;
+    console.log(postData)
+    return `<div class="post">
+                <div class="mainContentContainer">
+                    <div class="userImageContainer">
+                        <img src='${postedBy.profilePic}'/>
+                    </div>
+                </div>
+
+            </div>`;
+}//di funcion call tae place pya
