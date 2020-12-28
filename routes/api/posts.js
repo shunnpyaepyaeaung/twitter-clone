@@ -11,18 +11,18 @@ router.get('/',(req,res,next)=>{
   
 })
 
-router.post('/', (req,res,next)=>{
+router.post('/', async (req,res,next)=>{
     if(!req.body.content){
         console.log("Content param not sent with request.")
         return res.sendStatus(400);
     }
     var postData = {
-        content: req.body.content, //this is the data posted from the client
-        postedBy: req.session.user //this is the user data
+        content: req.body.content, 
+        postedBy: req.session.user 
     }
-    Post.create(postData) //postData created
-    .then(newPost=>{//then is resolved (successful), newPost will be just the postData
-        console.log(newPost.postedBy.profilePic) //log this, to get the profile pic
+    Post.create(postData)
+    .then(async newPost => {
+        newPost = await User.populate(newPost,{path: "postedBy"})
         res.status(201).send(newPost)
     })
     .catch(error=>{
